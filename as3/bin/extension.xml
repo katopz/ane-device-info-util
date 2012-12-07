@@ -1,0 +1,13 @@
+<extension xmlns="http://ns.adobe.com/air/extension/2.5">
+  <id>com.debokeh.anes.utils.DeviceInfoUtil</id>
+  <versionNumber>1</versionNumber>
+  <platforms>
+    <platform name="iPhone-ARM">
+            <applicationDeployment>
+                <nativeLibrary>libDeviceInfoUtil.a</nativeLibrary>
+                <initializer>DeviceInfoUtilExtInitializer</initializer>
+                <finalizer>DeviceInfoUtilExtFinalizer</finalizer>
+            </applicationDeployment>
+        </platform>
+  </platforms>
+</extension>
