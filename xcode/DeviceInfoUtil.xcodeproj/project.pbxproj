@@ -29,8 +29,6 @@
 		83A31867166B8AFE006798FF /* DeviceInfoUtil-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeviceInfoUtil-Prefix.pch"; sourceTree = "<group>"; };
 		83A3186A166B8AFE006798FF /* DeviceInfoUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInfoUtil.m; sourceTree = "<group>"; };
 		83A8C01D16710C7700A96A39 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
-		83A8C0201671138000A96A39 /* AS3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AS3.h; sourceTree = "<group>"; };
-		83A8C0211671138000A96A39 /* AS3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AS3.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +46,6 @@
 		83A31855166B8AFE006798FF = {
 			isa = PBXGroup;
 			children = (
-				83A8C0201671138000A96A39 /* AS3.h */,
-				83A8C0211671138000A96A39 /* AS3.m */,
 				83A8C01D16710C7700A96A39 /* FlashRuntimeExtensions.h */,
 				83A31865166B8AFE006798FF /* DeviceInfoUtil */,
 				83A31862166B8AFE006798FF /* Frameworks */,
