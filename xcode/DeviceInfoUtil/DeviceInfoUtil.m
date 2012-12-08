@@ -11,6 +11,7 @@
 
 #import "FlashRuntimeExtensions.h"
 
+// for getMACAddress
 #import <sys/socket.h>
 #import <sys/sysctl.h>
 #import <net/if.h>
@@ -22,14 +23,14 @@
 //
 //------------------------------------
 
-FREObject toString(NSString* nsstr)
+FREObject toString(NSString *nsstr)
 {
     FREObject as3Str = nil;
       
     if(nsstr != nil)
     {
         // Convert NSString to char.
-        const char* str = [nsstr UTF8String];
+        const char *str = [nsstr UTF8String];
     
         // Prepare for AS3
         FRENewObjectFromUTF8(strlen(str)+1, (const uint8_t*)str, &as3Str);
@@ -116,7 +117,7 @@ FREObject getCurrentSSID(FREContext ctx, void* funcData, uint32_t argc, FREObjec
     CFArrayRef interfaces = CNCopySupportedInterfaces();
     CFDictionaryRef dicRef = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(interfaces, 0));
     
-    NSString* ssid = nil;
+    NSString *ssid = nil;
     
     if (dicRef)
         ssid = CFDictionaryGetValue(dicRef, kCNNetworkInfoKeySSID);
@@ -135,7 +136,7 @@ FREObject getCurrentMACAddress(FREContext ctx, void* funcData, uint32_t argc, FR
 
 FREObject getCurrentDeviceName(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
-    UIDevice* device = [UIDevice currentDevice];
+    UIDevice *device = [UIDevice currentDevice];
     
     // Return data back to ActionScript
 	return toString([device name]);
