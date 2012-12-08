@@ -13,6 +13,7 @@ package
 			var tf:TextField;
 			addChild(tf = new TextField);
 			tf.autoSize = TextFieldAutoSize.LEFT;
+			
 			tf.text = "CurrentSSID : " + DeviceInfoUtil.getCurrentSSID();
 			tf.appendText("\nCurrentMACAddress : " +  DeviceInfoUtil.getCurrentMACAddress());
 			tf.appendText("\nCurrentDeviceName : " +  DeviceInfoUtil.getCurrentDeviceName());

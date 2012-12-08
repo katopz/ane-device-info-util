@@ -287,7 +287,8 @@
     
     
     
-    <extensionID>com.debokeh.anes.utils.DeviceInfoUtil</extensionID>
+    
         
+    <extensionID>com.debokeh.anes.utils.DeviceInfoUtil</extensionID>
     </extensions>
 </application>
