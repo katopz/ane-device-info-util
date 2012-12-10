@@ -9,8 +9,6 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <UIKit/UIKit.h>
 
-#import "FlashRuntimeExtensions.h"
-
 // for getMACAddress
 #import <sys/socket.h>
 #import <sys/sysctl.h>
@@ -19,9 +17,15 @@
 
 //------------------------------------
 //
-// Helper Methods.
+// FRE Helper.
 //
 //------------------------------------
+
+#import "FlashRuntimeExtensions.h"
+
+#define DEFINE_ANE_FUNCTION(fn) FREObject (fn)(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
+#define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
+#define DISPATCH_STATUS_EVENT(extensionContext, code, level) FREDispatchStatusEventAsync((extensionContext), (uint8_t*)code, (uint8_t*)level)
 
 FREObject toString(NSString *nsstr)
 {
@@ -39,6 +43,37 @@ FREObject toString(NSString *nsstr)
     // Return data back to ActionScript
 	return as3Str;
 }
+
+//------------------------------------
+//
+// Core Methods.
+//
+//------------------------------------
+
+FREObject getCurrentDeviceName(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+{
+    UIDevice *device = [UIDevice currentDevice];
+    
+    // Return data back to ActionScript
+	return toString([device name]);
+}
+
+FREObject getCurrentSSID(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
+{
+    CFArrayRef interfaces = CNCopySupportedInterfaces();
+    CFDictionaryRef dicRef = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(interfaces, 0));
+    
+    NSString *ssid = nil;
+    
+    if (dicRef)
+        ssid = CFDictionaryGetValue(dicRef, kCNNetworkInfoKeySSID);
+    
+    // Return data back to ActionScript
+	return toString(ssid);
+}
+
+// Credit
+// https://github.com/mateuszmackowiak/NativeAlert/blob/master/XCode/NativeAlert/NativeAlert.m
 
 NSString *getMACAddress()
 {
@@ -83,7 +118,7 @@ NSString *getMACAddress()
     if (errorFlag != NULL)
     {
         NSLog(@"Error: %@", errorFlag);
-        return errorFlag;
+        return [errorFlag autorelease];
     }
     
     // Map msgbuffer to interface message structure
@@ -106,68 +141,30 @@ NSString *getMACAddress()
     return macAddressString;
 }
 
-//------------------------------------
-//
-// Core Methods.
-//
-//------------------------------------
-
-FREObject getCurrentSSID(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
-{
-    CFArrayRef interfaces = CNCopySupportedInterfaces();
-    CFDictionaryRef dicRef = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(interfaces, 0));
-    
-    NSString *ssid = nil;
-    
-    if (dicRef)
-        ssid = CFDictionaryGetValue(dicRef, kCNNetworkInfoKeySSID);
-    
-    // Return data back to ActionScript
-	return toString(ssid);
-}
-
-// Credit
-// https://github.com/mateuszmackowiak/NativeAlert/blob/master/XCode/NativeAlert/NativeAlert.m
-
 FREObject getCurrentMACAddress(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
 {
     return toString(getMACAddress());
 }
 
-FREObject getCurrentDeviceName(FREContext ctx, void* funcData, uint32_t argc, FREObject argv[])
-{
-    UIDevice *device = [UIDevice currentDevice];
-    
-    // Return data back to ActionScript
-	return toString([device name]);
-}
-
 //------------------------------------
 //
-// Required Methods.
+// FRE Required Methods.
 //
 //------------------------------------
 
 // The context initializer is called when the runtime creates the extension context instance.
 
-void DeviceInfoUtilContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToTest, const FRENamedFunction** functionsToSet)
-{
-	*numFunctionsToTest = 3;
-	FRENamedFunction* func = (FRENamedFunction*)malloc(sizeof(FRENamedFunction)*3);
+void DeviceInfoUtilContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet)
+{       
+    static FRENamedFunction functionMap[] =
+    {
+        MAP_FUNCTION(getCurrentDeviceName, NULL),
+        MAP_FUNCTION(getCurrentSSID, NULL),
+        MAP_FUNCTION(getCurrentMACAddress, NULL)
+    };
     
-	func[0].name = (const uint8_t*)"getCurrentSSID";
-	func[0].functionData = NULL;
-	func[0].function = &getCurrentSSID;
-    
-    func[1].name = (const uint8_t*)"getCurrentMACAddress";
-	func[1].functionData = NULL;
-	func[1].function = &getCurrentMACAddress;
-	
-    func[2].name = (const uint8_t*)"getCurrentDeviceName";
-	func[2].functionData = NULL;
-	func[2].function = &getCurrentDeviceName;
-    
-	*functionsToSet = func;
+    *numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );
+	*functionsToSet = functionMap;
 }
 
 // The context finalizer is called when the extension's ActionScript code
