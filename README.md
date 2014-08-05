@@ -6,7 +6,7 @@ Adobe AIR Native Extensions (ANE) for get some information from iOS device.
 [<img src="http://a531.phobos.apple.com/us/r1000/073/Purple/v4/f9/78/c7/f978c780-6aed-a645-cfe7-aa6345f88fe2/mzl.jeforlim.320x480-75.jpg">](https://itunes.apple.com/us/app/postcat/id527138992?ls=1&mt=8)
 
 See in action here : [PostCat](https://itunes.apple.com/us/app/postcat/id527138992?ls=1&mt=8) <br>
-For commercial use you must [feed](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=katopz%40sleepydesign%2ecom&item_name=sleepydesign&no_shipping=0&no_note=1&tax=0&currency_code=USD&charset=UTF%2d8) my [cat](http://instagram.com/katopz) 
+For commercial use you must [feed](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=katopz%40gmail%2ecom&lc=TH&item_name=tuna&item_number=tuna&button_subtype=services&no_note=0&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynowCC_LG%2egif%3aNonHostedGuest) my [cat](http://instagram.com/katopz) 
 any $ is welcome :)
 - - -
 
