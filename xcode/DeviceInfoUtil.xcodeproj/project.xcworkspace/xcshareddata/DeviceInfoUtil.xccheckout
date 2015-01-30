@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6FEF1A41-0A04-4CBD-9351-AFB1ECA06481</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DeviceInfoUtil</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F7695FCEB715F11ADE047A4C6C1C73F564B8B773</key>
+		<string>https://github.com/katopz/ane-device-info-util.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>xcode/DeviceInfoUtil.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F7695FCEB715F11ADE047A4C6C1C73F564B8B773</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/katopz/ane-device-info-util.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F7695FCEB715F11ADE047A4C6C1C73F564B8B773</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F7695FCEB715F11ADE047A4C6C1C73F564B8B773</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ane-device-info-util</string>
+		</dict>
+	</array>
+</dict>
+</plist>
